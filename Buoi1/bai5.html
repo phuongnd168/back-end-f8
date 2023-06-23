@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    var a = 10;
+    var b = 20;
+    var c = 1;
+
+    if (a < b && a < c && b < c) {
+      console.log(`Dãy số sau khi sắp xếp tăng dần: ${a}, ${b}, ${c} `);
+    } else if (a < b && a < c && c < b) {
+      console.log(`Dãy số sau khi sắp xếp tăng dần: ${a}, ${c}, ${b} `);
+    } else if (b < a && b < c && a < c) {
+      console.log(`Dãy số sau khi sắp xếp tăng dần: ${b}, ${a}, ${c} `);
+    } else if (b < a && b < c && c < a) {
+      console.log(`Dãy số sau khi sắp xếp tăng dần: ${b}, ${c}, ${a} `);
+    } else if (c < a && c < b && a < b) {
+      console.log(`Dãy số sau khi sắp xếp tăng dần: ${c}, ${a}, ${b} `);
+    } else if (c < a && c < b && b < a) {
+      console.log(`Dãy số sau khi sắp xếp tăng dần: ${c}, ${b}, ${a} `);
+    }
+  </script>
+  <body></body>
+</html>
