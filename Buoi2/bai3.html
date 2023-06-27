@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [];
+      var soNguyen = 5;
+      if (soNguyen >= 0 && soNguyen % 1 === 0) {
+        for (var i = soNguyen; i >= 1; i--) {
+          if (i) {
+            arr.push(i);
+          }
+        }
+
+        var total = 1;
+        for (var i = 0; i < arr.length; i++) {
+          total *= arr[i];
+        }
+
+        console.log(`Giai thừa của ${soNguyen} là: ${total}`);
+      } else {
+        console.log("Dữ liệu đầu vào phải là số nguyên dương");
+      }
+    </script>
+  </body>
+</html>

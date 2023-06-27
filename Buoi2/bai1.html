@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    var km = 200,
+      price,
+      postage;
+
+    if (km <= 1 && km > 0) {
+      price = 15000;
+      postage = km * price;
+    } else if (km > 1 && km <= 5) {
+      price = 13500;
+      postage = km * price;
+    } else if (km > 5 && km <= 120) {
+      price = 11000;
+      postage = km * price;
+    } else if (km > 120) {
+      price = 11000;
+      postage = km * price - (km * price) / 10;
+    } else {
+      console.log("Số km phải lớn hơn 0");
+    }
+    console.log(`Số tiền cước phải trả là: ${postage}đ`);
+  </script>
+  <body></body>
+</html>

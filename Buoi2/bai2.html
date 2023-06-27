@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    var kWh = 450,
+      price,
+      postage;
+    if (kWh > 0 && kWh <= 50) {
+      price = 1678;
+      postage = kWh * price;
+    } else if (kWh >= 51 && kWh <= 100) {
+      price = 1734;
+      postage = 50 * 1678 + (kWh - 50) * price;
+    } else if (kWh >= 101 && kWh <= 200) {
+      price = 2014;
+      postage = 50 * 1678 + 50 * 1734 + (kWh - 100) * price;
+    } else if (kWh >= 201 && kWh <= 300) {
+      price = 2536;
+      postage = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kWh - 200) * price;
+    } else if (kWh >= 301 && kWh <= 400) {
+      price = 2834;
+      postage =
+        50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kWh - 300) * price;
+    } else if (kWh >= 401) {
+      price = 2927;
+      postage =
+        50 * 1678 +
+        50 * 1734 +
+        100 * 2014 +
+        100 * 2536 +
+        100 * 2834 +
+        (kWh - 400) * price;
+    } else {
+      console.log("Số kwh dùng phải lớn hơn 0");
+    }
+    console.log(`Số tiền phải đóng là: ${postage} `);
+  </script>
+  <body></body>
+</html>

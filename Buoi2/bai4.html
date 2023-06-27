@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var nguyenTo = 83;
+      var arr = [];
+      if (nguyenTo >= 1 && nguyenTo % 1 === 0) {
+        for (var i = nguyenTo; i >= 1; i--) {
+          if (nguyenTo % i === 0) {
+            arr.push(i);
+          }
+        }
+        if (arr.length == 2) {
+          console.log(`Số ${nguyenTo} là số nguyên số`);
+        } else {
+          console.log(`Số ${nguyenTo} không phải số nguyên số`);
+        }
+      } else {
+        console.log("Số nguyên tố phải là số nguyên dương");
+      }
+    </script>
+  </body>
+</html>
