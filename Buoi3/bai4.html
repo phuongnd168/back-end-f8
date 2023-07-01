@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function checkPrime(prime) {
+        var arr = [];
+        if (prime >= 1 && prime % 1 === 0) {
+          for (var i = prime; i >= 1; i--) {
+            if (prime % i === 0) {
+              arr.push(i);
+            }
+          }
+          if (arr.length === 2) {
+            return `Số ${prime} là số nguyên số`;
+          } else {
+            return `Số ${prime} không phải số nguyên số`;
+          }
+        } else {
+          return "Số nguyên tố phải là số nguyên dương";
+        }
+      }
+
+      console.log(checkPrime(5));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = 5,
+        b = 9,
+        totalEven = 0,
+        totalOdd = 0;
+      if (a < b) {
+        for (var i = a; i <= b; i++) {
+          if (i % 2 === 0) {
+            totalEven += i;
+          } else {
+            totalOdd += i;
+          }
+        }
+        console.log(
+          `Tổng số chẵn trong khoảng từ ${a} đến ${b} là ${totalEven}`
+        );
+        console.log(`Tổng số lẻ trong khoảng từ ${a} đến ${b} là ${totalOdd}`);
+      } else {
+        console.log(
+          "Vì đề bài yêu cầu trong khoảng từ a đến b nên a phải nhỏ hơn b"
+        );
+      }
+    </script>
+  </body>
+</html>
