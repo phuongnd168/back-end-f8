@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function convertStr(n) {
+        var convertN = n.toString();
+        var number = [
+          " không ",
+          " một ",
+          " hai ",
+          " ba ",
+          " bốn ",
+          " năm ",
+          " sáu ",
+          " bảy ",
+          " tám ",
+          " chín ",
+        ];
+
+        var result = "";
+        var thousand = parseInt(n / 1000);
+        var hundred = parseInt((n / 100) % 10);
+        var dozen = parseInt((n % 100) / 10);
+        var unit = n % 10;
+
+        if (n >= 0 && n <= 9999) {
+          if (thousand != 0) {
+            result += number[thousand] + "ngàn";
+            if (hundred === 0) {
+              result += number[hundred] + "trăm";
+              if (dozen === 0 && unit != 0) {
+                result += " linh ";
+              }
+            }
+          }
+          if (hundred != 0) {
+            result += number[hundred] + " trăm ";
+            if (dozen === 0 && unit != 0) {
+              result += " linh ";
+            }
+          }
+          if (dozen != 0 && dozen != 1) {
+            result += number[dozen] + " mươi";
+            if (dozen === 0 && unit != 0) result += " linh ";
+          }
+          if (dozen === 1) result += " mười ";
+          switch (unit) {
+            case 1:
+              if (dozen != 0 && dozen != 1) {
+                result += " mốt ";
+              } else {
+                result += number[unit];
+              }
+              break;
+            case 5:
+              if (dozen === 0) {
+                result += number[unit];
+              } else {
+                result += " lăm ";
+              }
+              break;
+            default:
+              if (unit != 0) {
+                result += number[unit];
+              }
+              break;
+          }
+          return result;
+        } else {
+          return "Dữ liệu đầu vào phải trong khoảng từ 0 đến 9999";
+        }
+      }
+      console.log(convertStr(1234));
+    </script>
+  </body>
+</html>
