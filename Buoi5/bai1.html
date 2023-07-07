@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    span {
+      color: red;
+    }
+  </style>
+  <body>
+    <h2 id="id"></h2>
+    <script>
+      var content =
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis dicta dignissimos vel. Alias mollitia, praesentium sint fugiat nobis sed ipsum ducimus deleniti ipsam ullam. Voluptate";
+      var arr = content.split(" ");
+      function loop(n) {
+        if (n > arr.length - 1) {
+          n = 0;
+        }
+
+        arr[n] = `<span>` + arr[n] + `</span>` + "";
+        console.log(arr);
+        if (n >= 1) {
+          arr[n - 1] = arr[n - 1].replace(/<\/?[^>]+(>|$)/g, "");
+        } else if (n === 0) {
+          arr[arr.length - 1] = arr[arr.length - 1].replace(
+            /<\/?[^>]+(>|$)/g,
+            ""
+          );
+        }
+
+        var str = arr.join("  ");
+        document.getElementById("id").innerHTML = str;
+        setTimeout(() => {
+          loop(n + 1);
+        }, 1000);
+      }
+
+      loop(0);
+    </script>
+  </body>
+</html>
