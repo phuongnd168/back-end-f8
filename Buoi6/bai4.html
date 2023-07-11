@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arrInt = [1, 10, 3, 46, 22, 15];
+      var element = 2,
+        element1 = 4;
+
+      function arrange() {
+        return arrInt.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      arrange();
+      function addE() {
+        arrInt.push(element);
+        arrInt.unshift(element1);
+        arrange();
+        return arrInt;
+      }
+      addE();
+      console.log(arrInt);
+    </script>
+  </body>
+</html>

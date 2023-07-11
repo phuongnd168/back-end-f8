@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      arrInt = [1, 4, 5, 2, 6, 100, 11, 55, 33];
+      function findMaxMin(n) {
+        if (Array.isArray(n)) {
+          var max, min, positionMax, positionMin;
+          max = n[0];
+          min = n[0];
+          for (var i = 0; i < n.length; i++) {
+            if (max <= n[i]) {
+              max = n[i];
+              positionMax = i;
+            }
+            if (min >= n[i]) {
+              min = n[i];
+
+              positionMin = i;
+            }
+          }
+
+          console.log(
+            `Số lớn nhất trong mảng nằm ở phần tử thứ ${positionMax} và có giá trị là ${max}`
+          );
+          console.log(
+            `Số nhỏ nhất trong mảng nằm ở phần tử thứ ${positionMin} và có giá trị là ${min}`
+          );
+        } else {
+          console.log("Dữ liệu đầu vào phải là mảng");
+        }
+      }
+      findMaxMin(arrInt);
+    </script>
+  </body>
+</html>

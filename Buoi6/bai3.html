@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [1, 2, 2, 3, "Phương", 3, "Phương", "@"];
+      var arrNew = [];
+      function filter(n) {
+        if (Array.isArray(n)) {
+          for (var i = 0; i < n.length; i++) {
+            if (arrNew.includes(n[i])) {
+              continue;
+            } else {
+              arrNew.push(n[i]);
+            }
+          }
+          n = arrNew;
+          return n;
+        } else {
+          return "Dữ liệu đầu vào phải là mảng";
+        }
+      }
+
+      console.log(filter(arr));
+    </script>
+  </body>
+</html>

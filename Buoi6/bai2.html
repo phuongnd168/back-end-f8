@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arrInt = [2, 3, 7, 35, 1, 60, 84];
+      var arrPrime = [];
+      var result = 0;
+      var flag = true;
+
+      function caculator(n) {
+        if (Array.isArray(n)) {
+          for (var i = 0; i < n.length; i++) {
+            if (n[i] < 2) {
+              flag = false;
+            } else {
+              for (var j = 2; j < n[i]; j++) {
+                if (n[i] % j === 0) {
+                  flag = false;
+                  break;
+                }
+                flag = true;
+              }
+            }
+
+            if (flag === true) {
+              arrPrime.push(n[i]);
+            }
+          }
+          if (arrPrime.length === 0) {
+            return "Không có số nguyên tố";
+          } else {
+            for (var i = 0; i < arrPrime.length; i++) {
+              result += arrPrime[i];
+            }
+
+            return `Trung bình các số nguyên tố trong mảng là ${
+              result / arrPrime.length
+            }`;
+          }
+        } else {
+          return "Dữ liệu đầu vào phải là mảng";
+        }
+      }
+
+      console.log(caculator(arrInt));
+    </script>
+  </body>
+</html>
