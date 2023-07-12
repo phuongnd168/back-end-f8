@@ -8,8 +8,7 @@
   <body>
     <script>
       var arrInt = [1, 10, 3, 46, 22, 15];
-      var element = 2,
-        element1 = 4;
+      var element = 5;
 
       function arrange() {
         return arrInt.sort(function (a, b) {
@@ -17,14 +16,34 @@
         });
       }
       arrange();
+      arrInt.unshift(element);
+      arrInt.push(element);
       function addE() {
-        arrInt.push(element);
-        arrInt.unshift(element1);
-        arrange();
+        if (arrInt.includes(element)) {
+          arrInt = arrInt.filter((item) => item !== element);
+        }
+        for (var i = 0; i < arrInt.length; i++) {
+          if (arrInt[0] >= element) {
+            arrInt.unshift(element);
+
+            break;
+          } else if (arrInt[i] <= element && arrInt[i + 1] >= element) {
+            var firstArr = arrInt.slice(0, i + 1);
+
+            firstArr.push(element);
+            var lastArr = arrInt.slice(i + 1);
+            arrInt = firstArr.concat(lastArr);
+
+            break;
+          } else if (arrInt[i] >= arrInt[arrInt.length - 1]) {
+            arrInt.push(element);
+            break;
+          }
+        }
         return arrInt;
       }
-      addE();
-      console.log(arrInt);
+
+      console.log(addE());
     </script>
   </body>
 </html>
