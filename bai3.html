@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [
+        ["a", 1, true],
+        ["b", 2, false],
+      ];
+      if (Array.isArray(arr)) {
+        if (arr.length === 0) {
+          console.log("Mảng phải chứa phần tử");
+        } else {
+          var newArr = arr.reduce(function (prev, current) {
+            if (Array.isArray(current)) {
+              for (index in current) {
+                prev.push(current[index]);
+              }
+            }
+            return prev;
+          }, []);
+
+          var result = [[], [], []];
+          newArr.reduce(function (prev, current) {
+            if (typeof current === "string") {
+              result[0].push(current);
+            }
+            if (typeof current === "number") {
+              result[1].push(current);
+            }
+            if (typeof current === "boolean") {
+              result[2].push(current);
+            }
+            return result;
+          }, result);
+          console.log(result);
+        }
+      } else {
+        console.log("Dữ liệu đầu vào phải là mảng");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr1 = [1, 5, 11, 2, 6];
+      var arr2 = [6, 4, 20, 11];
+      if (Array.isArray(arr1) && Array.isArray(arr2)) {
+        if (arr1.length === 0 || arr2.length === 0) {
+          console.log("Mảng phải chứa phần tử");
+        } else {
+          var result = arr1.reduce(function (prev, current) {
+            if (arr2.includes(current)) {
+              prev.push(current);
+            }
+            return prev;
+          }, []);
+          console.log("Kết quả giao giữa 2 mảng là " + result);
+        }
+      } else {
+        console.log("Dữ liệu đầu vào phải là mảng");
+      }
+    </script>
+  </body>
+</html>
