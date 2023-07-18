@@ -21,13 +21,20 @@
         ) {
           return "Thông tin không đầy đủ";
         }
+        for (i in data) {
+          if (data[i].email.includes(email)) {
+            return "Email đã tồn tại";
+          }
+        }
         Account.prototype.role = "user";
+
         data.push(new Account(name, password, email));
 
         return data;
       }
 
       register("Phương", 123, "phuong@gmail.com");
+
       console.log(register("Phương", 456, "phuong1@gmail.com"));
 
       function login(email, password) {
