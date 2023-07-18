@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var data = [];
+      function Account(name, password, email) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+      }
+      function register(name, password, email) {
+        if (
+          name === undefined ||
+          password === undefined ||
+          email === undefined
+        ) {
+          return "Thông tin không đầy đủ";
+        }
+        Account.prototype.role = "user";
+        data.push(new Account(name, password, email));
+
+        return data;
+      }
+
+      register("Phương", 123, "phuong@gmail.com");
+      console.log(register("Phương", 456, "phuong1@gmail.com"));
+
+      function login(email, password) {
+        for (i in data) {
+          if (email === data[i].email && password === data[i].password) {
+            return data[i];
+          }
+        }
+        return "Thông tin không hợp lệ";
+      }
+      console.log(login("phuong1@gmail.com", 456));
+    </script>
+  </body>
+</html>

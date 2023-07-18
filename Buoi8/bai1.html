@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Customers(name, age, address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+      }
+      var customers = [];
+      function createCustomers(customers) {
+        customers.push(new Customers("Nguyễn Văn A", 20, "Hà Nội"));
+        customers.push(new Customers("Nguyễn Văn B", 15, "Đà Nẵng"));
+        customers.push(new Customers("Nguyễn Văn C", 22, "Nam Định"));
+        customers.sort(function (a, b) {
+          return a.age - b.age;
+        });
+        for (i in customers) {
+          var arr = customers[i].name.split(" ");
+
+          var str = arr[0].concat(" " + arr[arr.length - 1]);
+
+          customers[i].shortName = str;
+        }
+        return customers;
+      }
+      var result = createCustomers(customers);
+      console.log(result);
+    </script>
+  </body>
+</html>
