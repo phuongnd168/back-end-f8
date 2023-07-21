@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Array.prototype.reduce2 = function (callback, initialValue) {
+        if (this.length !== 0) {
+          if (initialValue) {
+            for (var i = 0; i < this.length; i++) {
+              var value = callback(initialValue, this[i], i, this);
+
+              if (value) {
+                initialValue = value;
+              } else {
+                initialValue = undefined;
+              }
+            }
+            return value;
+          } else {
+            var initialValue = this[0];
+
+            for (var i = 0; i < this.length - 1; i++) {
+              var value = callback(initialValue, this[i + 1], i + 1, this);
+
+              if (value) {
+                initialValue = value;
+              } else {
+                initialValue = undefined;
+              }
+            }
+            return value;
+          }
+        } else {
+          return "Mảng phải chứa phần tử";
+        }
+      };
+
+      var arr = [2, 5, 6, 4, 6];
+      var result = arr.reduce2(function (prev, current, index, array) {
+        return prev + current;
+      });
+      console.log(result);
+    </script>
+  </body>
+</html>
