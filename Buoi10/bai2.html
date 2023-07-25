@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function openFile() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(() => {
+            resolve("File đã được mở");
+            reject("Lỗi");
+          }, 2000);
+        });
+      }
+      function readFile() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(() => {
+            resolve("F8 - Học lập trình để đi làm");
+            reject("Lỗi");
+          }, 1000);
+        });
+      }
+      function closeFile() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(() => {
+            resolve("File đã đóng");
+            reject("Lỗi");
+          }, 1000);
+        });
+      }
+      openFile()
+        .then(function (response) {
+          console.log(response);
+          return readFile();
+        })
+        .catch(function (error) {
+          console.log(error);
+          return readFile();
+        })
+        .then(function (response) {
+          console.log(response);
+          return closeFile();
+        })
+        .catch(function (error) {
+          console.log(error);
+          return closeFile();
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
