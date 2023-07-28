@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      let urlBase = "https://api.shrtco.de/v2/";
+      const urlBase = "https://api.shrtco.de/v2/";
 
       const shortLink = async function (url) {
         var response = await fetch(urlBase + "shorten?url=" + url);
