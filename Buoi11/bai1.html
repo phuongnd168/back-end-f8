@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let urlBase = "https://api.shrtco.de/v2/";
+
+      const shortLink = async function (url) {
+        var response = await fetch(urlBase + "shorten?url=" + url);
+        var data = await response.json();
+        if (data.ok) {
+          console.log("Đường dẫn sau khi rút gọn: " + data.result.short_link);
+        } else {
+          console.log(data.error);
+        }
+      };
+      shortLink("https://jsonplaceholder.typicode.com/posts");
+    </script>
+  </body>
+</html>
