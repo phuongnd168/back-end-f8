@@ -1,0 +1,1 @@
+{"mappings":"AAAA,MAAM,IAAI;AACV,QAAQ,IAAI","sources":["src/app.js"],"sourcesContent":["const a = 8;\r\nconsole.log(a);\r\n"],"names":[],"version":3,"file":"index.816e7b21.js.map","sourceRoot":"/__parcel_source_root/"}

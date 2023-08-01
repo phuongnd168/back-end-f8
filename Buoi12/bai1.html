@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const convertTime = (time) => {
+        if (Number.isInteger(time) && time > 0) {
+          const millisecond = 1,
+            second = 1000,
+            minute = 60 * second,
+            hour = 60 * minute,
+            day = 24 * hour;
+          const newArr = [];
+          const arr = [day, hour, minute, second, millisecond];
+          arr.reduce((prev, current) => {
+            newArr.push(Math.floor(prev / current));
+            return prev % current;
+          }, time);
+
+          let result = "";
+          const [days, hours, minutes, seconds, milliseconds] = newArr;
+          //1
+          if (days !== 0 && days !== 1) {
+            result += `${days} days `;
+          }
+          if (days === 1) {
+            result += `${days} day `;
+          }
+
+          //2
+          if (hours !== 0 && hours !== 1) {
+            result += `${hours} hours `;
+          }
+          if (hours === 1) {
+            result += `${hours} hour `;
+          }
+
+          //3
+          if (minutes !== 0 && minutes !== 1) {
+            result += `${minutes} minutes `;
+          }
+          if (minutes === 1) {
+            result += `${minutes} minute `;
+          }
+
+          //4
+          if (seconds !== 0 && seconds !== 1) {
+            result += `${seconds} seconds `;
+          }
+          if (seconds === 1) {
+            result += `${seconds} second `;
+          }
+
+          //5
+          if (milliseconds !== 0 && milliseconds !== 1) {
+            result += `${milliseconds} milliseconds `;
+          }
+          if (milliseconds === 1) {
+            result += `${milliseconds} millisecond `;
+          }
+
+          return result;
+        } else {
+          return "Dữ liệu phải là số nguyên dương";
+        }
+      };
+
+      console.log(convertTime(10));
+    </script>
+  </body>
+</html>

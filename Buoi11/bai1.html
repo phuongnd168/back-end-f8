@@ -9,16 +9,29 @@
     <script>
       const urlBase = "https://api.shrtco.de/v2/";
 
-      const shortLink = async function (url) {
-        var response = await fetch(urlBase + "shorten?url=" + url);
-        var data = await response.json();
-        if (data.ok) {
-          console.log("Đường dẫn sau khi rút gọn: " + data.result.short_link);
+      // const shortLink = async function (url) {
+      //   var response = await fetch(urlBase + "shorten?url=" + url);
+      //   var data = await response.json();
+      //   if (data.ok) {
+      //     console.log("Đường dẫn sau khi rút gọn: " + data.result.short_link);
+      //   } else {
+      //     console.log(data.error);
+      //   }
+      // };
+      // shortLink("https://jsonplaceholder.typicode.com/posts");
+      const serverUrl = `https://api.shrtco.de/v2/`;
+
+      var shortUrl = async function (url) {
+        var resp = await fetch(serverUrl + "shorten?url=" + url);
+        console.log(resp);
+        if (resp.ok) {
+          var data = await resp.json();
+          console.log(data);
         } else {
-          console.log(data.error);
+          throw new Error("Lỗi");
         }
       };
-      shortLink("https://jsonplaceholder.typicode.com/posts");
+      shortUrl("https://www.youtube.com/");
     </script>
   </body>
 </html>
