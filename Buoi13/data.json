@@ -1,0 +1,30 @@
+ {
+    "name": "Phương",
+  
+    "description": "F8 - Học lập trình",
+  
+    "address": ["Bắc Từ Liêm", " Hà Nội ", " Việt Nam"],
+  
+    "contact": {
+      "office": "Bắc Từ Liêm ",
+  
+      "phone": "+1 234 567 890 ",
+  
+      "email": "phuong@email.com "
+    },
+  
+    "profiles": [
+      " Facebook",
+  
+      " Twitter",
+  
+      " Instagram",
+  
+      "  Linkedin",
+  
+      " Stackoverflow",
+  
+      " Github"
+    ]
+  }
+  
