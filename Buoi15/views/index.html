@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="id"></td>
+          <td id="title"></td>
+          <td id="status"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form id="form" enctype="text/plain">
+      <div class="input-group mb-3">
+        <input
+          id="data"
+          type="text"
+          class="form-control"
+          placeholder="Enter the task!"
+          aria-label="Enter the task!"
+        />
+      </div>
+    </form>
+
+    <script src="../js/home.js"></script>
+  </body>
+</html>
