@@ -1,0 +1,115 @@
+ <!-- gallery section start -->
+
+ 
+<% if (gallery?.length) 
+{ [{title, content1, image1, image2, image3, image4, image5, image6, image7, image8, image9, text_button}] = gallery %>
+   
+   <div class="gallery_section layout_padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-12">
+             <h1 class="gallery_taital"><%= title %></h1>
+             <p class="gallery_text"><%= content1 %></p>
+          </div>
+       </div>
+       <div class="">
+          <div class="gallery_section_2">
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image1 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image2 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image3 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="gallery_section_2">
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image4 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image5 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="overlay">
+                            <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image6 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="overlay">
+                            <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="gallery_section_2">
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image7 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image8 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="<%= image9 %>" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="seemore_bt"><a href="#">See More</a></div>
+    </div>
+ </div>
+ <% } %>
+ <script src="/javascripts/jquery.min.js"></script>
+ <script src="/javascripts/popper.min.js"></script>
+ <script src="/javascripts/bootstrap.bundle.min.js"></script>
+ <script src="/javascripts/jquery-3.0.0.min.js"></script>
+ <script src="/javascripts/plugin.js"></script>
+ <script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
+ <script src="/javascripts/custom.js"></script>   

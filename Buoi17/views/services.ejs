@@ -1,0 +1,61 @@
+
+<% if (services?.length) 
+{ [{title, content1, title_child1, content_child1, icon1, title_child2, content_child2, icon2, title_child3, content_child3, icon3, text_button}] = services  %>
+
+<div class="services_section layout_padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-12">
+             <h1 class="services_taital"><%= title %></h1>
+             <p class="services_text"><%= content1 %></p>
+          </div>
+       </div>
+       <div class="services_section_2">
+          <div class="row">
+             <div class="col-lg-4 col-sm-12 col-md-4">
+                <div class="box_main active">
+                   <div class="house_icon">
+                      <img src="<%=icon1%>" class="image_1">
+                      <img src="<%=icon1%>" class="image_2">
+                   </div>
+                   <h3 class="decorate_text"><%= title_child1 %></h3>
+                   <p class="tation_text"><%= content_child1 %></p>
+                   <div class="readmore_bt"><a href="#"><%= text_button %></a></div>
+                </div>
+             </div>
+             <div class="col-lg-4 col-sm-12 col-md-4">
+                <div class="box_main">
+                   <div class="house_icon">
+                      <img src="<%=icon2%>" class="image_1">
+                      <img src="<%=icon2%>" class="image_2">
+                   </div>
+                   <h3 class="decorate_text"><%= title_child2 %></h3>
+                   <p class="tation_text"><%= content_child2 %></p>
+                   <div class="readmore_bt"><a href="#"><%= text_button %></a></div>
+                </div>
+             </div>
+             <div class="col-lg-4 col-sm-12 col-md-4">
+                <div class="box_main">
+                   <div class="house_icon">
+                      <img src="<%=icon3%>" class="image_1">
+                      <img src="<%=icon3%>" class="image_2">
+                   </div>
+                   <h3 class="decorate_text"><%= title_child3 %></h3>
+                   <p class="tation_text"><%= content_child3 %></p>
+                   <div class="readmore_bt"><a href="#"><%= text_button %></a></div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ <% } %>
+
+ <script src="/javascripts/jquery.min.js"></script>
+ <script src="/javascripts/popper.min.js"></script>
+ <script src="/javascripts/bootstrap.bundle.min.js"></script>
+ <script src="/javascripts/jquery-3.0.0.min.js"></script>
+ <script src="/javascripts/plugin.js"></script>
+ <script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
+ <script src="/javascripts/custom.js"></script>   

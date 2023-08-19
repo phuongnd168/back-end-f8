@@ -1,0 +1,33 @@
+<!-- about section start -->
+
+
+<% if (about?.length) 
+{ [{title, content1, content2, text_button, image1}] = about %>
+ <div class="about_section layout_padding">
+  <div class="container">
+     <div class="row">
+        <div class="col-md-6">
+           <div class="about_taital_main">
+               <div class="about_taital"><%= title %></div>
+               <p class="about_text"><%= content1 %></p>
+               <p class="about_text"><%= content2 %></p>
+               <div class="read_bt"><a href="#"><%=text_button %></a></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+           <div class="about_img"><img src="<%= image1 %>"></div>
+        </div>
+     </div>
+  </div>
+</div>
+         <% } %>
+             
+       
+        
+ <script src="/javascripts/jquery.min.js"></script>
+ <script src="/javascripts/popper.min.js"></script>
+ <script src="/javascripts/bootstrap.bundle.min.js"></script>
+ <script src="/javascripts/jquery-3.0.0.min.js"></script>
+ <script src="/javascripts/plugin.js"></script>
+ <script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
+ <script src="/javascripts/custom.js"></script>   
