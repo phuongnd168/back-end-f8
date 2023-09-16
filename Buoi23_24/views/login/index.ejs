@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đăng nhập</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <style>
+      .content {
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+      }
+      .content button {
+        width: 100%;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Đăng nhập</h1>
+      <% if(err){ %>
+      <div class="alert alert-danger" role="alert"><%= err ?? "" %></div>
+      <%}%>
+       
+    
+
+      <form class="row g-3 needs-validation" novalidate method="post">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="validationCustom03"
+            name="emailLogin"
+            placeholder="Email..."
+            required
+            <% if(emailLogin){ %>
+              value=<%= emailLogin %>
+            <% } %>
+         
+          />
+        </div>
+
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Mật khẩu</label>
+          <input
+            type="password"
+            class="form-control"
+            id="validationCustom03"
+            name="passwordLogin"
+            placeholder="Password..."
+            required
+            <% if(passwordLogin){ %>
+              value=<%= passwordLogin %>
+            <% } %>
+          />
+        </div>
+
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Đăng nhập</button>
+         
+        </div>
+        
+      </form>
+      <div class="col-12 mt-2">
+        <a href="/register"><button class="btn btn-success">Đăng ký</button></a> 
+      </div>
+    </div>
+  </body>
+</html>
