@@ -105,26 +105,41 @@ module.exports = {
     const msgEdit = req.flash("msgEdit")
     const msg = req.flash("msg")
     const errors = req.flash("errors")
-    
-    res.render("customers/edit", {customer, msgEdit,  msg, errors, validate})
+    const emailIdentical = req.flash("emailIdentical")
+    const err = req.flash("err")
+    res.render("customers/edit", {customer, msgEdit,  msg, errors, validate, emailIdentical, err})
   },
   handleEdit: async (req, res) => {
     const errors = validationResult(req)
-   
-    if(errors.isEmpty()){
-      const customer = await Customer;  
-      const customerEdit = await customer.update({ name: req.body.name, email: req.body.email, status: req.body.status }, {
-        where: {
-          id: +req.params.id
-        }
-      });
-      req.flash("msgEdit", "Sửa thành công")
-      res.redirect(`/customers/edit/${req.params.id}`)
-    }else{
-      req.flash('errors', errors.array())
-      req.flash('msg', 'Vui lòng nhập đầy đủ thông tin')
+    const customers = await Customer;  
+    const customer = await customers.findOne({ where: { id: req.params.id } });
+    const customerIdentical  = await customers.findOne({ where: { email: req.body.email } });
+    if(customerIdentical && customerIdentical.email !== customer.email){
+      req.flash("emailIdentical", "Email đã tồn tại")
+      req.flash("err","Vui lòng nhập đầy đủ thông tin")
       res.redirect(`/customers/edit/${req.params.id}`)
     }
+    else{
+      if(errors.isEmpty()){
+        const customer = await Customer;  
+        const customerEdit = await customer.update({ name: req.body.name, email: req.body.email, status: req.body.status }, {
+          where: {
+            id: +req.params.id
+          }
+        });
+        req.flash("msgEdit", "Sửa thành công")
+        res.redirect(`/customers/edit/${req.params.id}`)
+      }
+     
+       
+      else{
+   
+        req.flash('errors', errors.array())
+        req.flash('msg', 'Vui lòng nhập đầy đủ thông tin')
+        res.redirect(`/customers/edit/${req.params.id}`)
+      }
+    }
+   
 
   },
   delete: async (req, res) => {
