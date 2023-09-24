@@ -57,6 +57,7 @@ module.exports = {
     const offset = (page - 1) * PER_PAGE;
     const msg = req.flash("msg")
     const msgDelete = req.flash("msgDelete")
+    const errDelete = req.flash("errDelete")
     const customers = await customer.findAll({
      
       order: [["id", "DESC"]],
@@ -66,6 +67,7 @@ module.exports = {
     });
   
     res.render("customers/index", {
+      errDelete,
       customers,
       moment,
       totalPage,
@@ -152,6 +154,7 @@ module.exports = {
   deleteById: async (req, res) => {
    
     const data = Object.keys(req.body)
+
     const value = Object.values(req.body)
 
     if(value.toString().includes("Xóa")){
@@ -167,9 +170,14 @@ module.exports = {
       res.redirect("/customers")
     
     }
+ 
     else{
-      const customer = db.Customer
-      const customerDelete = await customer.destroy({
+      if(!data.length){
+        req.flash("errDelete", "Chưa chọn bản ghi nào")
+        res.redirect("/customers")
+      }else{
+        const customer = db.Customer
+       const customerDelete = await customer.destroy({
         where: {
           email: data
         }
@@ -178,6 +186,8 @@ module.exports = {
     
   
       res.redirect("/customers")
+      }
+      
     
     }
    
