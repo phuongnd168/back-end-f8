@@ -156,7 +156,7 @@ module.exports = {
     const data = Object.keys(req.body)
 
     const value = Object.values(req.body)
-
+    console.log(data, value)
     if(value.toString().includes("Xóa")){
       const customer = db.Customer
       const customerDelete = await customer.destroy({
@@ -170,7 +170,23 @@ module.exports = {
       res.redirect("/customers")
     
     }
- 
+    else if(data.toString().includes("all")){
+     
+    
+        const customer = db.Customer
+        const customerDelete = await customer.truncate();
+        req.flash("msgDelete", "Xóa thành công")
+      
+    
+        res.redirect("/customers")
+        if(customerDelete){
+          
+        req.flash("errDelete", "Chưa chọn bản ghi nào")
+          res.redirect("/customers")
+        }
+      
+   
+    }
     else{
       if(!data.length){
         req.flash("errDelete", "Chưa chọn bản ghi nào")
