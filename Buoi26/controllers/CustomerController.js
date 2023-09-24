@@ -172,19 +172,14 @@ module.exports = {
     }
     else if(data.toString().includes("all")){
      
-    
+
         const customer = db.Customer
         const customerDelete = await customer.truncate();
         req.flash("msgDelete", "Xóa thành công")
       
     
         res.redirect("/customers")
-        if(customerDelete){
-          
-        req.flash("errDelete", "Chưa chọn bản ghi nào")
-          res.redirect("/customers")
-        }
-      
+       
    
     }
     else{
