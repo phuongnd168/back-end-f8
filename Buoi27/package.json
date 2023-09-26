@@ -1,0 +1,35 @@
+{
+  "name": "buoi25",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:down": "npx sequelize-cli db:migrate:undo",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all",
+    "migrate:refresh": "npm run migrate:reset && npm run migrate:up",
+    "seed:db": "npx sequelize-cli db:seed:all"
+  },
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
+    "http-errors": "~1.6.3",
+    "md5": "^2.3.0",
+    "moment": "^2.29.4",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.1"
+  }
+}

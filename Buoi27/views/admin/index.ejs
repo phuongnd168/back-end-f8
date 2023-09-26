@@ -1,0 +1,93 @@
+<h1>Danh sách khách hàng</h1>
+<a href="/admin/customers/create" class="btn btn-primary py-2">Thêm mới</a>
+<% if(msg?.length){ %>
+  <div class="alert alert-success mt-2"><%= msg %></div>
+<%}%>
+<% if(msgDelete?.length){ %>
+  <div class="alert alert-success mt-2"><%= msgDelete %></div>
+<%}%>
+<% if(errDelete?.length){ %>
+  <div class="alert alert-danger mt-2"><%= errDelete %></div>
+<%}%>
+<form action="" class="mb-2 mt-2">
+  <div class="row">
+    <div class="col-3">
+      <select name="status" class="form-select">
+        <option value="all">Tất cả trạng thái</option>
+        <option value="active" <%= req.query.status === 'active' ? 'selected': ''; %>>Kích hoạt</option>
+        <option value="inactive" <%= req.query.status === 'inactive' ? 'selected': ''; %>>Chưa kích hoạt</option>
+      </select>
+    </div>
+    <div class="col-7">
+      <input type="search" name="keyword" class="form-control" placeholder="Từ khóa tìm kiếm..." value="<%= req.query.keyword %>">
+      
+    </div>
+
+    <div class="col-2 d-grid">
+      <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+    </div>
+  </div>
+</form>
+<form action="/admin/customers/delete_by_id" onsubmit="return confirm('Bạn có chắc chắn?')" method="post">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><input type="checkbox" name="all" /></th>
+      <th width="5%">STT</th>
+      <th>Tên</th>
+      <th>Email</th>
+      <th width="10%">Trạng thái</th>
+      <th>Thời gian</th>
+      <th>Sửa</th>
+      <th>Xóa</th>
+      <th>Người thêm</th>
+    </tr>
+  </thead>
+  <tbody
+ 
+    <% customers.forEach(({id, name, email, status, createdAt, user_id},index) => {%>
+    <tr>
+   
+      <td><input type="checkbox" name="<%= email %>" /></td>
+      <td><%= index+1 %></td>
+      <td><%= name %></td>
+      <td><%= email %></td>
+      <td><%= status ? 'Active':'Inactive' %></td>
+      <td><%= moment(createdAt).format("DD/MM/YYYY h:mm:ss a") %></td>
+      <td><a href="/admin/customers/edit/<%= id %>" class="btn btn-warning">Sửa</a></td>
+   
+     
+      <td><input class="btn btn-danger" type="submit" name=<%= id %> value="Xóa"/></td>
+  
+      <td><%= userAdd[id-1] %></td>
+       
+      
+    </tr>
+   
+    <%
+  }) %>
+ 
+  </tbody>
+</table>
+
+  
+<input class="btn btn-danger" type="submit" value="Xóa đã chọn"/>
+  
+
+</form>
+<% if(totalPage>1){ %>
+<nav class="d-flex justify-content-end">
+  <ul class="pagination">
+    <% if(page>1){ %>
+    <li class="page-item"><a class="page-link" href="?<%= getPaginateUrl(req, page-1) %>">Previous</a></li>
+    <% } %>
+    <% for(let i = 1; i<=totalPage; i++){%>
+    <li class="page-item <%= +page ===+i ? 'active' : '' %>"> <a class="page-link" href="?<%= getPaginateUrl(req, i) %>"><%= i%></a></li>
+    <%  } %>
+    
+      <% if(page<totalPage){ %>
+    <li class="page-item"><a class="page-link" href="?<%= getPaginateUrl(req).includes("status=all")?`page=${+page+1}`:getPaginateUrl(req,+page+1) %> ">Next</a></li>
+    <% } %>
+  </ul>
+</nav>
+<% } %>
