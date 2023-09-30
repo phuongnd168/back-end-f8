@@ -44,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
     }else{
       if(req.session.role){
         res.redirect("/admin/customers")
+        
       }
      else{
       next()

@@ -100,13 +100,13 @@
           />
 
           <% if(err?.length){ %>
-            <span class="text-danger"><%= err? %></span>
+            <span class="text-danger"><%= err %></span>
           <%}%>
           <span class="text-danger"><%= validate.getError(errors, "password2") %></span>
         </div>
         <div class="col-12 mt-2">
             <a href="/register"><button class="btn btn-primary" type="submit">Đăng ký</button></a>
-          </div>
+        </div>
       
       </form>
     
