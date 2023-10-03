@@ -1,0 +1,27 @@
+<h1 class="text-center">Gửi Email</h1>
+<% if(err?.length){%>
+  <div class="alert alert-danger"><%= err%></div>
+<% } %>
+<% if(success?.length){%>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Email gửi đến</label>
+    <input type="email" name="emailSentTo" class="form-control" placeholder="Email sent to..." required />
+  </div>
+  <div class="mb-3">
+    <label for="">Tiêu đề</label>
+    <input type="text" name="title" class="form-control" placeholder="Title..." required />
+  </div>
+  <div class="mb-3">
+    <label for="">Nội dung</label>
+    <input type="text" name="content" class="form-control" placeholder="Content..." required />
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-primary">Gửi</button>
+  </div>
+  
+
+</form>
+<a style="text-decoration: none;" class="d-grid mt-2" href="/send-email/history"><button class="btn btn-warning">Lịch sử</button></a>  

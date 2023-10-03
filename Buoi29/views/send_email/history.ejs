@@ -1,0 +1,37 @@
+ <% if(!data?.length) {%>
+    <h1>Không có bản ghi nào</h1>
+    <a style="text-decoration: none;" class="d-grid mt-2" href="/send-email"><button class="btn btn-danger">Quay lại</button></a> 
+<%  } else{%>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Email gửi đến</th>
+        <th width="20%">Tiêu đề</th>
+        <th width="20%">Trạng thái</th>
+        <th width="20%">Thời gian gửi</th>
+        <th width="20%">Xem chi tiết</th>
+   
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach((element, index) => {
+          %>
+      <tr>
+
+        <td><%= index+1 %></td>
+        <td><%= element.email_sent_to %></td>
+        <td><%= element.title %></td>
+        <td><%= element.status ? 'Đã đọc':'Chưa đọc' %></td>
+        <td><%= moment(element.sent_time).format('DD/MM/YYYY hh:mm:ss a') %></td>
+   
+        <td><a href="/send-email/history/<%= element.id %>"><button class="btn btn-success">Xem chi tiết</button></a></td>
+      </tr>
+      <%
+      }) %>
+  
+    </tbody>
+  </table>
+  <a style="text-decoration: none;" class="d-grid mt-2" href="/send-email"><button class="btn btn-danger">Quay lại</button></a> 
+  <% }%>
+ 
