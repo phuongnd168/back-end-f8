@@ -3,9 +3,15 @@ const ForgotPass = require('../controllers/ForgotPassController');
 var router = express.Router();
 const jwt = require('jsonwebtoken')
 /* GET home page. */
-router.get('/', ForgotPass.index);
-router.post('/', ForgotPass.handleForgotPass);
-router.get('/verify/:token', function(req, res, next){
+const isLogin = (req, res, next) => {
+    if(req.user){
+      res.redirect("/")
+    }
+    next()
+}
+router.get('/', isLogin, ForgotPass.index);
+router.post('/', isLogin, ForgotPass.handleForgotPass);
+router.get('/verify/:token', isLogin, function(req, res, next){
     const {token} = req.params
 
     try {
@@ -19,7 +25,7 @@ router.get('/verify/:token', function(req, res, next){
         
     }
 }, ForgotPass.resetPassword);
-router.post('/verify/:token', function(req, res, next){
+router.post('/verify/:token', isLogin, function(req, res, next){
     const {token} = req.params
 
     try {

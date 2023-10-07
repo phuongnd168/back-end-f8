@@ -82,8 +82,10 @@ module.exports = {
                           id: decoded.id
                         }
                       });
+                    decoded = {}
                 })
-                req.flash("success", "Thay đổi mật khẩu thành công")  
+                req.flash("success", "Thay đổi mật khẩu thành công")
+                
                 res.redirect("/login")
             }
             else{
