@@ -54,51 +54,62 @@ module.exports = {
         permissions = permissions.map(permission => {
             return permission.value
         });
-        res.render("role/role_update", {role, permissions, id})
+        const error = req.flash("error")
+        res.render("role/role_update", {role, permissions, id, error})
     },
     handleUpdateRole: async (req, res) => {
         const permissionAll = ["Thêm", "Sửa", "Xóa", "Xem"]
         const { id } = req.params
         const {role, permission} = req.body
         const roleUpdate = await Role.findByPk(id)
-        await Role.update({ name: role }, {
-            where: {
-              id: id,
-            },
-        }
-        )  
-        if(typeof permission === 'string'){
-            for(let i = 0; i < permissionAll.length; i++){
-                await roleUpdate.removePermission(await Permission.findOne({
-                    where:{
-                        value: permissionAll[i]
-                }}))
-            }
-            await roleUpdate.addPermission(await Permission.findOne({
-                where:{
-                    value: permission
-            }}))
-            
-            res.redirect("/role")
-        }
-        else if(permission?.length){
-            for(let i = 0; i < permissionAll.length; i++){
-                await roleUpdate.removePermission(await Permission.findOne({
-                    where:{
-                        value: permissionAll[i]
-                }}))
-            }
-            for(let i = 0; i < permission.length; i++){
-                await roleUpdate.addPermission(await Permission.findOne({
-                    where:{
-                        value: permission[i]
-                }}))
-            }
-            res.redirect("/role")
-            
+        if(!role){
+            req.flash("error","Vui lòng nhập tên role")
+            res.redirect("/role/edit/"+id)
         }else{
-            res.redirect("/role")
+            await Role.update({ name: role }, {
+                where: {
+                  id: id,
+                },
+            }
+            ) 
+            if(typeof permission === 'string'){
+                    for(let i = 0; i < permissionAll.length; i++){
+                        await roleUpdate.removePermission(await Permission.findOne({
+                            where:{
+                                value: permissionAll[i]
+                        }}))
+                    }
+                    await roleUpdate.addPermission(await Permission.findOne({
+                        where:{
+                            value: permission
+                    }}))
+                     req.flash("success","Sửa thành công")
+                    res.redirect("/role")
+            }
+            else if(permission?.length){
+                for(let i = 0; i < permissionAll.length; i++){
+                    await roleUpdate.removePermission(await Permission.findOne({
+                        where:{
+                            value: permissionAll[i]
+                    }}))
+                }
+                for(let i = 0; i < permission.length; i++){
+                    await roleUpdate.addPermission(await Permission.findOne({
+                        where:{
+                            value: permission[i]
+                    }}))
+                }
+                req.flash("success","Sửa thành công")
+                res.redirect("/role")
+            }
+            else{
+                req.flash("error","Vui lòng chọn quyền")
+                res.redirect("/role/edit/"+id)
+            }
+            
+        }  
         }
-        
-    }
+      
+       
+   
 }
