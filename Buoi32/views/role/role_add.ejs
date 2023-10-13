@@ -1,0 +1,52 @@
+<h2>Thiết lập Role</h2>
+<% if(error?.length){ %>
+  <div class="col alert alert-danger"><%= error %></div>
+<% } %>
+<form action="" method="post">
+    <div class="col mb-2">
+        <input
+            type="text"
+            class="form-control"
+            name="role"
+            placeholder="Tên role..."
+        />
+    </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th width="20%">Module</th>
+        <th>Quyền</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Quản lý User</td>
+        <td>
+          <div class="row">
+            <div class="col">
+              <label>
+                <input type="checkbox" name="permission" value="Xem" /> Xem
+              </label>
+            </div>
+            <div class="col">
+              <label>
+                <input type="checkbox" name="permission" value="Thêm" /> Thêm
+              </label>
+            </div>
+            <div class="col">
+              <label>
+                <input type="checkbox" name="permission" value="Sửa" /> Sửa
+              </label>
+            </div>
+            <div class="col">
+              <label>
+                <input type="checkbox" name="permission" value="Xóa" /> Xóa
+              </label>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-primary">Thêm mới</button>
+</form>

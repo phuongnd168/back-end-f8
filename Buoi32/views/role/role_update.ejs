@@ -1,0 +1,54 @@
+<h2>Thiết lập Role</h2>
+
+<form action="" method="post"> 
+<div class="col mb-2">
+    <input
+        type="text"
+        class="form-control"
+        name="role"
+        placeholder="Tên role..."
+        <% if(role){ %>
+            value="<%= role.name %>"
+        <%} %>
+    />
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="20%">Module</th>
+            <th>Quyền</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Quản lý User</td>
+            <td>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            <input type="checkbox" name="permission" value="Xem" <%= permissions.includes('Xem') ? "checked" : "" %>> Xem
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label>
+                            <input type="checkbox" name="permission" value="Thêm" <%= permissions.includes('Thêm') ? "checked" : "" %>/> Thêm
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label>
+                            <input type="checkbox" name="permission" value="Sửa" <%= permissions.includes('Sửa') ? "checked" : "" %>/> Sửa
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label>
+                            <input type="checkbox" name="permission" value="Xóa" <%= permissions.includes('Xóa') ? "checked" : "" %>/> Xóa
+                        </label>
+                    </div>
+              
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a href="/role/edit/<%= id %>"><button type="submit" class="btn btn-primary">Lưu thay đổi</button></a>
+</form>

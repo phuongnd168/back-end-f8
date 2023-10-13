@@ -1,0 +1,25 @@
+<h2>Danh sách Role</h2>
+<% if(success?.length){ %>
+    <div class="col alert alert-success"><%= success %></div>
+  <% } %>
+<a href="/role/add" class="btn btn-primary mb-2">Thêm mới</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="5%">STT</th>
+            <th>Tên Role</th>
+            <th width="50%">Sửa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% role.forEach(({name, id}, index) => { %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= name %></td>
+            <td>
+                <a href="/role/edit/<%= id %>" class="btn btn-warning">Sửa</a>
+            </td>
+        </tr>
+        <%}) %>
+    </tbody>
+</table>
