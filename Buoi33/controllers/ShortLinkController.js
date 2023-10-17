@@ -143,7 +143,7 @@ module.exports = {
     };
     
     let body = {
-        "short_url": "https://t.ly/dTYA2",
+        "short_url": id.shortened_link,
         "long_url": req.body.original_link,
         "expire_at_datetime": "2035-01-17 15:00:00",
         "public_stats": true,
