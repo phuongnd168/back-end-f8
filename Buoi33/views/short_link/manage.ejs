@@ -1,0 +1,36 @@
+<h2>List URL</h2>
+<% if(error?.length){ %>
+    <div class="col-12 alert alert-danger"><%= error %></div>
+<% } %>
+<% if(success?.length){ %>
+    <div class="col-12 alert alert-success"><%= success %></div>
+<% } %>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="5%">STT</th>
+            <th>Short Link</th>
+            <th>Original Link</th>
+            <th>Views</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(({shortened_link, original_link, views, id}, index) => { %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= shortened_link %></td>
+            <td><%= original_link %></td>
+            <td><%= views ? views : "no views" %></td>
+            <td>
+                <a href="/short-link/edit/<%= id %>" class="btn btn-warning">Edit</a>
+            </td>
+            <td>
+                <a href="/short-link/delete/<%= id %>" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <%}) %>
+    </tbody>
+</table>
+<a href="/short-link"><button class="btn btn-danger mt-2">Return</button></a>

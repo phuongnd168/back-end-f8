@@ -1,0 +1,20 @@
+
+<h1>Short URL</h1>
+<h1>Paste the URL to be shortened</h1>
+<% if(error?.length){ %>
+    <div class="col-8 alert alert-danger"><%= error %></div>
+<% } %>
+
+<form action="" method="post">
+    <div class="col-8">
+        <input class="form-control mb-2" name="original_link" type="text" placeholder="Enter the link here"/>
+    </div>
+    
+    <button class="btn btn-primary">Shorten URL</button>
+</form>
+<a href="/short-link/manage"><button class="btn btn-danger mt-2">Manage URL</button></a>
+<% if(short_link?.length){ %>
+    <div class="col-8 mt-2">
+        <h2>Short Link: <b><%= short_link %></b></h2>
+    </div>
+<% } %>

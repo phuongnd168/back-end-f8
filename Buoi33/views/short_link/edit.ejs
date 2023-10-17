@@ -1,0 +1,16 @@
+<h1>Edit Link</h1>
+<% if(error?.length){ %>
+    <div class="col-8 alert alert-danger"><%= error %></div>
+<% } %>
+<form action="" method="post">
+    <div class="col-8">
+        <label>New URL Original</label>
+        <input class="form-control mb-2" value =<%= id ?  id.original_link :"" %> name="original_link" type="text"/>
+    </div>
+    
+    <a href="/short-link/edit/<%= id.id %>"><button class="col-2 btn btn-primary" type="submit">Edit</button></a>
+</form>
+
+<div>
+    <a href="/short-link/manage"><button class="btn btn-danger col-2 mt-2">Return</button></a>
+</div>
