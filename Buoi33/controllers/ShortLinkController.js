@@ -40,6 +40,7 @@ module.exports = {
         await shortLink.create({
           original_link: data.long_url,
           shortened_link: data.short_url,
+          user_id: req.user.id
 
         })
         res.redirect("/short-link")
@@ -50,7 +51,8 @@ module.exports = {
     manage: async (req, res) => {
       const error = req.flash("error")
       const success = req.flash("success")
-      const data = await shortLink.findAll()
+      const data = await shortLink.findAll({include: model.User})
+      
       const url = new URL(
         "https://t.ly/api/v1/link/stats"
       );
@@ -74,7 +76,7 @@ module.exports = {
             headers,
         }).then(response => response.json());
         views = await views
-     
+   
         await shortLink.update({views: views.clicks},{
           where: {
             id: element.id
@@ -84,7 +86,7 @@ module.exports = {
       
       }
       
-      res.render("short_link/manage", {data, error, success})
+      res.render("short_link/manage", {data, error, success, req})
     },
     delete: async (req, res) => {
       const id = await shortLink.findByPk(req.params.id)

@@ -17,19 +17,22 @@
         </tr>
     </thead>
     <tbody>
-        <% data.forEach(({shortened_link, original_link, views, id}, index) => { %>
-        <tr>
-            <td><%= index + 1 %></td>
-            <td><%= shortened_link %></td>
-            <td><%= original_link %></td>
-            <td><%= views ? views : "no views" %></td>
-            <td>
-                <a href="/short-link/edit/<%= id %>" class="btn btn-warning">Edit</a>
-            </td>
-            <td>
-                <a href="/short-link/delete/<%= id %>" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
+        <% data.forEach((element, index) => { %>
+            <% if(element.User?.id === req.user.id) {%>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= element.shortened_link %></td>
+                    <td><%= element.original_link %></td>
+                    <td><%= element.views ? element.views : "no views" %></td>
+                    <td>
+                        <a href="/short-link/edit/<%= element.id %>" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/short-link/delete/<%= element.id %>" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            <%}  %>
+       
         <%}) %>
     </tbody>
 </table>
