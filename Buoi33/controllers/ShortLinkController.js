@@ -147,6 +147,7 @@ module.exports = {
     let body = {
         "short_url": id.shortened_link,
         "long_url": req.body.original_link,
+        "short_id": req.body.shortened_link, 
         "expire_at_datetime": "2035-01-17 15:00:00",
         "public_stats": true,
     };
@@ -161,9 +162,12 @@ module.exports = {
       req.flash("error", data.message)
       res.redirect("/short-link/edit/"+id.id)
     }
+  
     else{
+      console.log(data)
         await shortLink.update({
           original_link: data.long_url,
+          shortened_link: data.short_url
         },
         {
         where: {

@@ -7,7 +7,10 @@
         <label>New URL Original</label>
         <input class="form-control mb-2" value =<%= id ?  id.original_link :"" %> name="original_link" type="text"/>
     </div>
-    
+    <div class="col-8">
+        <label>New Short Id</label>
+        <input class="form-control mb-2" value =<%= id ?  id.shortened_link.replace("https://t.ly/", "") :"" %> name="shortened_link" type="text"/>
+    </div>
     <a href="/short-link/edit/<%= id.id %>"><button class="col-2 btn btn-primary" type="submit">Edit</button></a>
 </form>
 
