@@ -1,0 +1,26 @@
+<h2>Phân quyền</h2>
+<form action="" method="post">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th width="10%">
+          <input type="checkbox"/>
+        </th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% roles.forEach(({id,name}) => { %>
+      <tr>
+        <td>
+          <input type="checkbox" name="roles" value="<%= id %>" <%= isRole(user.Roles, id)?"checked":"" %>/>
+        </td>
+        <td>
+          <%= name %>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+</form>
