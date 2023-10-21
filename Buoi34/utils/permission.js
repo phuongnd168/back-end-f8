@@ -10,25 +10,10 @@ module.exports = {
         return +role.id === roleId
       })
     },
-    isPermissionAdd:(permissionData) =>{
-      if(permissionData.includes("users.add")){
-        return true
-      }
+    isPermission:(permissionData, permissionValue) => {
+      return permissionData.find((permission)=>{
+        return permission === permissionValue
+      })
     },
-    isPermissionRead:(permissionData) =>{
-      if(permissionData.includes("users.read")){
-        return true
-      }
-    },
-    isPermissionDelete:(permissionData) =>{
-       if(permissionData.includes("users.delete")){
-        return true
-      }
-    },
-    isPermissionUpdate:(permissionData) =>{
-      if(permissionData.includes("users.update")){
-        return true
-      }
 
-    }
   };

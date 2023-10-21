@@ -1,16 +1,9 @@
 var express = require("express");
 var router = express.Router();
 const PermissionMiddleware = require("../middlewares/PermissionMiddleware")
-const isLogin = (req, res, next) => {
-    if (!req.user) {
-      res.redirect("/login");
-      return
-    }
-  
-    next();
-};
+
 /* GET home page. */
-router.get("/", isLogin, async function(req, res, next){
+router.get("/", async function(req, res, next){
     const permissions = await PermissionMiddleware(req)
     if(!permissions?.includes("users.read")){
       const err = req.flash("err")

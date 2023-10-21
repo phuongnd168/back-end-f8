@@ -2,14 +2,7 @@ var express = require("express");
 var router = express.Router();
 const PermissionMiddleware = require("../middlewares/PermissionMiddleware")
 const RoleController = require("../controllers/RoleController");
-const isLogout = (req, res, next) => {
-    if (!req.user) {
-      res.redirect("/login");
-      return
-    }
-  
-    next();
-};
+
 /* GET users listing. */
 router.get("/", async function(req, res, next){
   const permissions = await PermissionMiddleware(req)
@@ -19,7 +12,7 @@ router.get("/", async function(req, res, next){
     return
   }
   next()
-}, isLogout, RoleController.index);
+}, RoleController.index);
 router.get("/add", async function(req, res, next){
   const permissions = await PermissionMiddleware(req)
   if(!permissions?.includes("users.add")){
@@ -28,9 +21,9 @@ router.get("/add", async function(req, res, next){
     return
   }
   next()
-}, isLogout, RoleController.add);
-router.post("/add", isLogout, RoleController.handleAdd);
-router.get("/edit/:id", isLogout, async function(req, res, next){
+}, RoleController.add);
+router.post("/add", RoleController.handleAdd);
+router.get("/edit/:id", async function(req, res, next){
   const permissions = await PermissionMiddleware(req)
   if(!permissions?.includes("users.update")){
     req.flash("err", "Không có quyền")
@@ -39,10 +32,10 @@ router.get("/edit/:id", isLogout, async function(req, res, next){
   }
   next()
 }, RoleController.edit);
-router.post("/edit/:id", isLogout, RoleController.handleEdit);
+router.post("/edit/:id", RoleController.handleEdit);
 
 
-router.post("/delete/:id", isLogout, async function(req, res, next){
+router.post("/delete/:id", async function(req, res, next){
   const permissions = await PermissionMiddleware(req)
   if(!permissions?.includes("users.delete")){
     req.flash("err", "Không có quyền")

@@ -9,6 +9,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const model = require("./models/index");
+const AuthMiddleware = require("./middlewares/AuthMiddleware");
 var usersRouter = require("./routes/users");
 var roleRouter = require("./routes/role");
 var indexRouter = require("./routes/index");
@@ -47,10 +48,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/login', loginRouter);
+app.use(AuthMiddleware);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/role", roleRouter);
-app.use('/login', loginRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
