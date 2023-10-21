@@ -15,8 +15,8 @@ router.get("/", async function(req, res, next){
 }, UserController.index);
 
 router.get("/permission/:id", async function(req, res, next){
-  const permissions = await PermissionMiddleware(req)
-  if(!permissions?.includes("users.read")){
+ 
+  if(!req.user.isAdmin){
     req.flash("err", "Không có quyền")
     res.redirect("/")
     return

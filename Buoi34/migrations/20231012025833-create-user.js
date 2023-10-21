@@ -15,8 +15,14 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
+      
       password: {
         type: Sequelize.STRING
+      },
+
+      isAdmin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,

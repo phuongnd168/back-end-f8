@@ -1,15 +1,25 @@
 <h2>Danh sách người dùng</h2>
-<a href="#" class="btn btn-primary">Thêm mới</a>
-<hr />
-<table class="table table-bordered">
+<% if(isPermission(permissions, "users.add")){%>
+  <a href="#" class="btn btn-primary">Thêm mới</a>
+<%}%>
+
+<table class="table table-bordered mt-2">
   <thead>
     <tr>
       <th width="5%">STT</th>
       <th>Tên</th>
       <th>Email</th>
-      <th width="15%">Phân quyền</th>
-      <th width="5%">Sửa</th>
-      <th width="5%">Xóa</th>
+      <% if(req.user.isAdmin){%>
+        <th width="15%">Phân quyền</th>
+      <%}%>
+    
+      <% if(isPermission(permissions, "users.update")){%>
+        <th width="5%">Sửa</th>
+      <%}%>
+      <% if(isPermission(permissions, "users.delete")){%>
+        <th width="5%">Xóa</th>
+      <%}%>
+    
     </tr>
   </thead>
   <tbody>
@@ -18,15 +28,24 @@
       <td><%= index+1 %></td>
       <td><%= name %></td>
       <td><%= email %></td>
-      <td>
-        <a href="/users/permission/<%= id %>" class="btn btn-success">Phân quyền</a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-warning">Sửa</a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-danger">Xóa</a>
-      </td>
+      <% if(req.user.isAdmin){%>
+        <td>
+          <a href="/users/permission/<%= id %>" class="btn btn-success">Phân quyền</a>
+        </td>
+      <%}%>
+    
+      <% if(isPermission(permissions, "users.update")){%>
+        <td>
+          <a href="#" class="btn btn-warning">Sửa</a>
+        </td>
+      <%}%>
+      <% if(isPermission(permissions, "users.delete")){%>
+        <td>
+          <a href="#" class="btn btn-danger">Xóa</a>
+        </td>
+      <%}%>
+    
+  
     </tr>
     <%}) %>
 

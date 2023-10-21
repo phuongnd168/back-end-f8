@@ -1,11 +1,15 @@
 const model = require("../models/index");
 const User = model.User;
-const {isRole} = require("../utils/permission")
+const {isRole, isPermission} = require("../utils/permission")
+
 const Role = model.Role;
+const PermissionMiddleware = require("../middlewares/PermissionMiddleware")
+
 module.exports = {
   index: async (req, res) => {
     const users = await User.findAll();
-    res.render("users/index", { users });
+    const permissions = await PermissionMiddleware(req)
+    res.render("users/index", { users, isPermission, permissions, req });
   },
 
   permission: async (req, res) => {
