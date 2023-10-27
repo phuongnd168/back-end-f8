@@ -6,6 +6,13 @@ const User = model.User;
 module.exports = {
   login: async (req, res) => {
     const { email, password } = req.body;
+    if(!email || !password){
+      res.status(400).json({
+        status: "error",
+        message: "Email and password is required",
+      });
+      return;
+    }
     const user = await User.findOne({
       where: {
         email,
@@ -14,7 +21,7 @@ module.exports = {
     if (!user) {
       res.status(400).json({
         status: "error",
-        message: "Authentication Failed",
+        message: "Wrong account or password",
       });
       return;
     }
@@ -23,7 +30,7 @@ module.exports = {
     if (!status) {
       res.status(400).json({
         status: "error",
-        message: "Authentication Failed",
+        message: "Wrong account or password",
       });
       return;
     }
