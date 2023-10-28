@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
             cb(null, file.originalname)
         }
     })
-    const upload = multer({ storage: storage }).single("myFile")
+    const upload = multer({ storage: storage }).fields([{ name: 'myFile', maxCount: 8 }])
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
             res.json(err)

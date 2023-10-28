@@ -6,8 +6,9 @@ const User = model.User;
 const jwt = require("jsonwebtoken");
 module.exports = {
     upload: async (req, res) => {
-        const file = req.file
-        if (!file) {
+        const files = req.files['myFile']
+
+        if (!files) {
             res.status(400).json({
                 error: "Error",
                 message: 'Please upload a file'
@@ -19,19 +20,22 @@ module.exports = {
         const token = authorization.replace("Bearer", "").trim();
         const decoded = jwt.verify(token, JWT_SECRET);
         const { userId } = decoded.data;
-        const upload = await UploadFile.findOne({
-           where: {
-            [Op.and]: [{ url: path.join(__dirname, "../public/uploads/"+file.filename)}, { user_id: userId }], 
-           }    
-        })
-        console.log(upload)
-        if(!upload){
-            await UploadFile.create({url: path.join(__dirname, "../public/uploads/"+file.filename), user_id: userId})
-        }
-      
+        files.forEach(async (file) => {
+            const upload = await UploadFile.findOne({
+                where: {
+                 [Op.and]: [{ url: path.join(__dirname, "../public/uploads/"+file.filename)}, { user_id: userId }], 
+                }    
+             })
+     
+             if(!upload){
+                 await UploadFile.create({url: path.join(__dirname, "../public/uploads/"+file.filename), user_id: userId})
+             }
+           
+        });
+    
         res.json({
             message: "Success",
-            data: file
+            data: files
         })
     },
     getData: async (req, res) => {

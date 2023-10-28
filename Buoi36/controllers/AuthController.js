@@ -18,6 +18,7 @@ module.exports = {
         email,
       },
     });
+   
     if (!user) {
       res.status(400).json({
         status: "error",
