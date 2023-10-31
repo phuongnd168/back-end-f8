@@ -5,7 +5,7 @@ const User = model.User;
 const black_lists = model.black_lists
 module.exports = {
     logout: async(req, res) => {
-    const { refreshToken } = req.body;
+ 
     const authorization = req.headers["authorization"];
     if(!authorization){
         res.status(401).json({
@@ -25,13 +25,7 @@ module.exports = {
           });
         return
     }
-    if (!refreshToken) {
-      res.status(400).json({
-        status: "error",
-        message: "refreshToken is required",
-      });
-      return;
-    }
+  
 
     try {
       const decodeAccess = jwt.decode(token);
@@ -45,7 +39,7 @@ module.exports = {
 
       const user = await User.findOne({
         where: {
-            refreshToken: refreshToken,
+            id: decodeAccess.userId,
         },
       });
    
@@ -56,8 +50,6 @@ module.exports = {
         });
         return;
       }
-      const decodeRefresh = jwt.decode(refreshToken);
-      if(decodeRefresh && decodeAccess.userId === user.id){
         await black_lists.create({accessToken: token})
         const updateStatus = await User.update({refreshToken: null}, {
             where: {
@@ -76,12 +68,8 @@ module.exports = {
             message: "Log out successfully",
         });
         return;
-      }
-      res.status(401).json({
-        status: "error",
-        message: "Unauthorize",
-      });
-      return;
+      
+     
     } catch (e) {
       res.status(401).json({
         status: "error",
