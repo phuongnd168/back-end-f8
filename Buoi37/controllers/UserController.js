@@ -32,17 +32,16 @@ module.exports = {
         email: "user6@gmail.com"
       },
     ]
-    emailData.forEach(async(e) => {
-      console.log(e)
-      const name = e.name
-      const email = e.email
-      new Event(
+    for(const data of emailData){
+      const name = data.name
+      const email = data.email
+      await new Event(
         new SendMail({
           name,
           email,
         }),
-      );
-    });
+      ).store();
+      }
    
 
     res.send("Hello");

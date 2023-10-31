@@ -9,7 +9,7 @@ const QueueJob = model.QueueJob;
 class Event {
   constructor(job) {
     this.job = job;
-    this.store();
+    
   }
 
   store = async () => {
