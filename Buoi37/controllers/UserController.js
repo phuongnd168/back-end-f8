@@ -1,11 +1,11 @@
 const SendMail = require("../jobs/SendMail");
 const Event = require("../core/Event");
 module.exports = {
-  login: (req, res) => {
-    res.render("users/login");
+  sendMail: (req, res) => {
+    res.render("users/sendMail");
   },
 
-  handleLogin: async (req, res) => {
+  handleSendMail: async (req, res) => {
     const emailData = [
       {
         name: "Phương",
@@ -32,9 +32,10 @@ module.exports = {
         email: "user6@gmail.com"
       },
     ]
-    emailData.forEach(e => {
-      let name = e.name
-      let email = e.email
+    emailData.forEach(async(e) => {
+      console.log(e)
+      const name = e.name
+      const email = e.email
       new Event(
         new SendMail({
           name,
