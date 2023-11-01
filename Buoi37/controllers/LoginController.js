@@ -1,3 +1,4 @@
+
 const bcrypt = require("bcrypt");
 const jwt = require("../utils/jwt");
 const model = require("../models/index");
@@ -45,7 +46,8 @@ module.exports = {
         return;
       }
     }
-    const token = jwt.createToken({ userId: user.id });
+    
+    const token = jwt.createToken({ userId: user.id, createdAt: new Date().getTime() });
     const refreshToken = jwt.createRefresh();
     const updateStatus = await User.update(
       {

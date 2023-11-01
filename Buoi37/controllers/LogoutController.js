@@ -29,6 +29,7 @@ module.exports = {
 
     try {
       const decodeAccess = jwt.decode(token);
+      
       if(!decodeAccess){
         res.status(401).json({
             status: "error",
@@ -50,7 +51,11 @@ module.exports = {
         });
         return;
       }
-        await black_lists.create({accessToken: token})
+      
+        await black_lists.create
+        ({
+          accessToken: token,
+        })
         const updateStatus = await User.update({refreshToken: null}, {
             where: {
                 id: user.id
@@ -71,6 +76,7 @@ module.exports = {
       
      
     } catch (e) {
+      console.log(e)
       res.status(401).json({
         status: "error",
         message: "Unauthorize",
