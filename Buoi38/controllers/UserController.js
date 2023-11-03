@@ -8,10 +8,10 @@ module.exports = {
         const users = await User.findAll({})
         const cookieName = "users"
         const cookieValue = uuid()
-        if (!fs.existsSync("./data")){
-            fs.mkdirSync("./data");
+        if (!fs.existsSync("./cache")){
+            fs.mkdirSync("./cache");
         }
-        const filePath = path.dirname(__dirname) + `/data/${cookieValue}.json`
+        const filePath = path.dirname(__dirname) + `/cache/${cookieValue}.json`
         fs.appendFile(filePath, JSON.stringify(users), function(err) {
 		    if (err) { 
                 throw err 
