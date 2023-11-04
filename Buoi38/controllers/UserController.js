@@ -11,9 +11,9 @@ module.exports = {
         if (!fs.existsSync("./cache")){
             fs.mkdirSync("./cache");
         }
-        const filePath = path.dirname(__dirname) + `/cache/${cookieValue}.json`
+        const filePath =`./cache/${cookieValue}.json`
         try {
-            fs.appendFile(filePath, JSON.stringify(users), function(err) {
+            fs.writeFile(filePath, JSON.stringify(users), function(err) {
                 if (err) { 
                     throw err 
                 }else{
