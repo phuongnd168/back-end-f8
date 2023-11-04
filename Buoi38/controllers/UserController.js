@@ -13,7 +13,7 @@ module.exports = {
         }
         const filePath =`./cache/${cookieValue}.json`
         try {
-            fs.writeFile(filePath, JSON.stringify(users), function(err) {
+            fs.appendFile(filePath, JSON.stringify(users), function(err) {
                 if (err) { 
                     throw err 
                 }else{
