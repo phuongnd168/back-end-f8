@@ -7,13 +7,15 @@ const isLogin = (req, res, next) => {
       res.redirect("/")
       return
     }
+    res.clearCookie("user")
+    res.clearCookie("auth")
     next()
 }
 /* GET home page. */
 
 router.get('/', isLogin, LoginController.index);
-router.post('/', passport.authenticate('local', { 
-  failureRedirect: '/login', failureFlash: true, successRedirect: "/" 
+router.post('/', passport.authenticate('local', {  
+  failureRedirect: '/login', failureFlash: true, successRedirect: "/"
 }))
 
 module.exports = router;

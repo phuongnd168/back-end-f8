@@ -5,42 +5,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-const OAuth2Server = require('oauth2-server');
+
 const flash = require('connect-flash');
 const expressLayouts = require('express-ejs-layouts');
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
-var cors = require('cors')
+
 var app = express();
 
-const Request = OAuth2Server.Request;
-const Response = OAuth2Server.Response;
-const oauth = new OAuth2Server({
-  model: {
-    // We support returning promises.
-    getAccessToken: function() {
-      return new Promise('works!');
-    },
-  
-    // Or, calling a Node-style callback.
-    getAuthorizationCode: function(done) {
-      done(null, 'works!');
-    },
-  
-    // Or, using generators.
-    getClient: function*() {
-      yield somethingAsync();
-      return 'works!';
-    },
-  
-    // Or, async/wait (using Babel).
-    getUser: async function() {
-      await somethingAsync();
-      return 'works!';
-    }
-  }
-});
-app.use(cors())
+
+
 
 app.use(
   session({
