@@ -3,10 +3,11 @@ const loginToken = model.login_token
 module.exports = async (req, res, next) => {
 
     if(!req.cookies.user){
-        res.redirect("/login/oauth")
         res.clearCookie("auth")
         res.clearCookie("user")
         res.clearCookie("token")
+        res.redirect("/login/oauth")
+        
         return
     }
     const user = await loginToken.findOne({

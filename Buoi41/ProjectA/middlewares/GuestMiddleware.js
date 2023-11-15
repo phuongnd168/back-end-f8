@@ -3,8 +3,5 @@ module.exports = (req, res, next) => {
         res.redirect("/")
         return
     }
-    res.clearCookie("user")
-    res.clearCookie("token")
-    res.clearCookie("auth")
     next()
 }
